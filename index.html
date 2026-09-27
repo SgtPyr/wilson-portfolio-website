@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> Wilson. | Developer</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --bg: #070a0f;
+      --bg2: #0b1017;
+      --card: #0d131b;
+      --card2: #101821;
+      --border: rgba(255,255,255,.09);
+
+      --text: #f2f5f8;
+      --muted: #8d99a8;
+      --blue: #8ebcff;
+      --blue2: #3e8cff;
+
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(49,115,220,.08),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: auto;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      z-index: 1000;
+
+      background: rgba(7,10,15,.78);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .menu {
+      display: none;
+
+      background: none;
+      border: none;
+
+      color: white;
+      font-size: 24px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 70px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      right: -250px;
+      top: 60px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(45,111,216,.12),
+          transparent 65%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.1fr .9fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: .22em;
+
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(48px, 7vw, 82px);
+
+      line-height: .98;
+
+      letter-spacing: -.065em;
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero-text {
+      color: var(--muted);
+
+      max-width: 570px;
+
+      font-size: 17px;
+
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 12px 20px;
+
+      border-radius: 9px;
+
+      border: 1px solid var(--border);
+
+      font-size: 13px;
+
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #080b10;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 30px rgba(255,255,255,.12);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,.02);
+    }
+
+    .btn-secondary:hover {
+      background: var(--card2);
+      border-color: rgba(255,255,255,.2);
+    }
+
+
+    /* PROFILE */
+
+    .profile-area {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-frame {
+      width: 340px;
+      height: 440px;
+
+      padding: 7px;
+
+      position: relative;
+
+      border: 1px solid rgba(125,178,255,.35);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(120,170,255,.15),
+          rgba(255,255,255,.02)
+        );
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.5),
+        0 0 50px rgba(50,120,255,.07);
+    }
+
+    .profile-frame::before,
+    .profile-frame::after {
+      content: "";
+
+      position: absolute;
+
+      width: 55px;
+      height: 55px;
+
+      border: 1px solid rgba(130,180,255,.35);
+    }
+
+    .profile-frame::before {
+      left: -42px;
+      top: 15px;
+
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .profile-frame::after {
+      right: -42px;
+      bottom: 15px;
+
+      border-left: none;
+      border-top: none;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      border-radius: 4px;
+
+      filter: saturate(.9) contrast(1.03);
+    }
+
+    .profile-label {
+      position: absolute;
+
+      right: -110px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: var(--muted);
+
+      font-size: 9px;
+
+      line-height: 2;
+
+      letter-spacing: .2em;
+
+      writing-mode: vertical-rl;
+    }
+
+
+    /* =========================
+       SOCIALS
+    ========================= */
+
+    .socials {
+      display: flex;
+
+      gap: 18px;
+
+      margin-top: 28px;
+    }
+
+    .socials a {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 50%;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      transition: .2s;
+    }
+
+    .socials a:hover {
+      color: white;
+      border-color: var(--blue);
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 0;
+
+      border-top:
+        1px solid var(--border);
+    }
+
+    .section-top {
+      display: grid;
+
+      grid-template-columns:
+        .7fr 1.3fr;
+
+      gap: 70px;
+
+      margin-bottom: 45px;
+    }
+
+    .section-number {
+      color: var(--blue);
+
+      font-size: 10px;
+
+      letter-spacing: .2em;
+
+      font-weight: 700;
+
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size:
+        clamp(32px, 5vw, 52px);
+
+      line-height: 1;
+
+      letter-spacing: -.05em;
+    }
+
+    .section-description {
+      color: var(--muted);
+
+      max-width: 540px;
+
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 30px;
+    }
+
+    .about-card {
+      padding: 30px;
+
+      border: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.025),
+          rgba(255,255,255,.008)
+        );
+
+      border-radius: 14px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .about-card p + p {
+      margin-top: 18px;
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 22px;
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
+      border-radius: 12px;
+
+      transition: .25s;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(120,180,255,.25);
+
+      background: var(--card2);
+    }
+
+    .skill-icon {
+      color: var(--blue);
+
+      font-size: 20px;
+
+      margin-bottom: 16px;
+    }
+
+    .skill h3 {
+      font-size: 14px;
+
+      margin-bottom: 5px;
+    }
+
+    .skill p {
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       GAMEVAULT
+    ========================= */
+
+    .featured {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 340px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      background:
+        radial-gradient(
+          circle at 80% 50%,
+          rgba(35,100,190,.14),
+          transparent 35%
+        ),
+        var(--card);
+    }
+
+    .featured-content {
+      position: relative;
+
+      z-index: 2;
+
+      width: 58%;
+
+      padding: 45px;
+    }
+
+    .featured::after {
+      content: "GAMEVAULT";
+
+      position: absolute;
+
+      right: -30px;
+      bottom: -30px;
+
+      font-size: 120px;
+
+      font-weight: 900;
+
+      letter-spacing: -.08em;
+
+      color: rgba(255,255,255,.025);
+    }
+
+    .project-label {
+      color: var(--blue);
+
+      font-size: 10px;
+
+      letter-spacing: .18em;
+
+      margin-bottom: 18px;
+    }
+
+    .featured h3 {
+      font-size:
+        clamp(38px, 6vw, 64px);
+
+      letter-spacing: -.06em;
+
+      margin-bottom: 2px;
+    }
+
+    .tagline {
+      color: var(--blue);
+
+      font-size: 14px;
+
+      margin-bottom: 20px;
+    }
+
+    .featured p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      max-width: 610px;
+
+      margin-bottom: 22px;
+    }
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+
+      border-radius: 100px;
+
+      padding: 5px 10px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    /* =========================
+       PROJECT GRID
+    ========================= */
+
+    .projects {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+    }
+
+    .project {
+      min-height: 210px;
+
+      padding: 22px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      transition: .25s;
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+
+      background: var(--card2);
+
+      border-color:
+        rgba(120,180,255,.2);
+    }
+
+    .project-type {
+      color: var(--muted);
+
+      font-size: 9px;
+
+      letter-spacing: .15em;
+    }
+
+    .project h3 {
+      font-size: 16px;
+
+      margin: 15px 0 8px;
+    }
+
+    .project p {
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .status {
+      display: inline-block;
+
+      width: fit-content;
+
+      margin-top: 15px;
+
+      padding: 4px 8px;
+
+      border-radius: 100px;
+
+      font-size: 9px;
+
+      color: var(--blue);
+
+      background: rgba(80,140,255,.08);
+    }
+
+
+    /* =========================
+       INTERESTS
+    ========================= */
+
+    .interests {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .interest {
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
+      padding: 8px 13px;
+
+      border-radius: 100px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 60px;
+
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size:
+        clamp(45px, 7vw, 80px);
+
+      line-height: .95;
+
+      letter-spacing: -.06em;
+    }
+
+    .contact-text {
+      color: var(--muted);
+
+      font-size: 15px;
+
+      max-width: 450px;
+
+      margin-bottom: 25px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding: 28px 0;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .footer {
+      display: flex;
+
+      justify-content: space-between;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width: 900px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-area {
+        justify-content: flex-start;
+      }
+
+      .profile-frame {
+        width: 280px;
+        height: 360px;
+      }
+
+      .section-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .skills {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .projects {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .featured-content {
+        width: 80%;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media(max-width: 600px) {
+
+  .nav-links {
+    position: absolute;
+
+    top: 70px;
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    background: rgba(7,10,15,.98);
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+
+  /* HERO */
+
+  .hero {
+    min-height: auto;
+    padding-top: 110px;
+    padding-bottom: 80px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero-text {
+    font-size: 15px;
+  }
+
+
+  /* PROFILE */
+
+  .profile-area {
+    justify-content: center;
+  }
+
+  .profile-frame {
+    width: 280px;
+    height: 360px;
+  }
+
+  .profile-label {
+    display: none;
+  }
+
+
+  /* SECTIONS */
+
+  section {
+    padding: 75px 0;
+  }
+
+  .section-top {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: 38px;
+    line-height: 1;
+  }
+
+  .section-description {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+
+  /* ABOUT */
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* SKILLS */
+
+  .skills {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .skill {
+    padding: 20px;
+  }
+
+
+  /* FEATURED PROJECT */
+
+  .featured {
+    min-height: auto;
+  }
+
+  .featured-content {
+    width: 100%;
+    padding: 28px;
+  }
+
+  .featured h3 {
+    font-size: 42px;
+  }
+
+  .featured p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .featured::after {
+    font-size: 65px;
+  }
+
+
+  /* PROJECTS */
+
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project {
+    min-height: 190px;
+  }
+
+
+  /* CONTACT */
+
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .contact h2 {
+    font-size: 52px;
+  }
+
+
+  /* FOOTER */
+
+  .footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+}
+
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        WILSON<span>.</span>
+      </a>
+
+      <button class="menu" id="menu">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div class="hero-content reveal">
+
+        <div class="eyebrow">
+          DEVELOPER · BUILDER · RESEARCHER
+        </div>
+
+        <h1>
+          Building software
+          <span>that solves problems.</span>
+        </h1>
+
+        <p class="hero-text">
+          I build software systems, experiment with AI,
+          study cybersecurity, and turn ideas into practical tools.
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="#projects"
+            class="btn btn-primary"
+          >
+            View Projects →
+          </a>
+
+          <a
+            href="#about"
+            class="btn btn-secondary"
+          >
+            About Me
+          </a>
+
+        </div>
+
+        <div class="socials">
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            title="GitHub"
+          >
+            GH
+          </a>
+
+          <a
+            href="#"
+            title="LinkedIn"
+          >
+            in
+          </a>
+
+          <a
+            href="mailto:augustus.wilson.gentech@gmail.com"
+            target="_blank"
+            title="Email"
+          >
+            @
+          </a>
+
+        </div>
+
+      </div>
+
+  </header>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-top reveal">
+
+        <div>
+
+          <div class="section-number">
+            01 / ABOUT
+          </div>
+
+          <h2 class="section-title">
+            Building systems,
+            not just scripts.
+          </h2>
+
+        </div>
+
+        <p class="section-description">
+          I am a developer focused on learning by building.
+          My interests include software development, artificial
+          intelligence, cybersecurity, automation and personal
+          computing systems.
+        </p>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="about-card reveal">
+
+          <p>
+            Rather than studying technology only in theory,
+            I turn ideas into working projects and experiments.
+            Each project is an opportunity to understand how
+            software works from the inside.
+          </p>
+
+          <p>
+            My long-term direction is to build useful software
+            systems that organize information, automate repetitive
+            work and preserve knowledge.
+          </p>
+
+        </div>
+
+
+        <div class="about-card reveal">
+
+          <p>
+            My current work includes GameVault, personal
+            knowledge-management systems, AI assistants,
+            cybersecurity laboratories and custom developer tools.
+          </p>
+
+          <p>
+            I am particularly interested in Python, backend systems,
+            AI, automation and software architecture.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-top reveal">
+
+        <div>
+
+          <div class="section-number">
+            02 / SKILLS
+          </div>
+
+          <h2 class="section-title">
+            Tools I work with.
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="skills">
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            PY
+          </div>
+
+          <h3>Python</h3>
+
+          <p>
+            Backend, automation and tools
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            JS
+          </div>
+
+          <h3>JavaScript</h3>
+
+          <p>
+            Web applications and interfaces
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            ⚛
+          </div>
+
+          <h3>React</h3>
+
+          <p>
+            Modern frontend development
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            API
+          </div>
+
+          <h3>FastAPI</h3>
+
+          <p>
+            Python backend APIs
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            DB
+          </div>
+
+          <h3>Databases</h3>
+
+          <p>
+            SQLite, PostgreSQL and data design
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            GIT
+          </div>
+
+          <h3>Git</h3>
+
+          <p>
+            Version control and collaboration
+          </p>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-icon">
+            AI
+          </div>
+
+          <h3>Artificial Intelligence</h3>
+
+          <p>
+            Assistants, agents and knowledge systems
+          </p>
+          
+        </div>
+
+                <div class="skill reveal">
+
+          <div class="skill-icon">
+            SEC
+          </div>
+
+          <h3>Cybersecurity</h3>
+
+          <p>
+            Security research and controlled labs
+          </p>
+
+        </div>
+
+      </div>
+      <!-- END .skills -->
+
+    </div>
+    <!-- END .container -->
+
+  </section>
+  <!-- END SKILLS -->
+
+
+  <!-- =========================
+       FEATURED PROJECT
+  ========================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-top reveal">
+
+        <div>
+
+          <div class="section-number">
+            03 / FEATURED PROJECT
+          </div>
+
+          <h2 class="section-title">
+            Current flagship.
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="featured reveal">
+
+        <div class="featured-content">
+
+          <div class="project-label">
+            PROJECT / 001
+          </div>
+
+          <h3>
+            GameVault
+          </h3>
+
+          <div class="tagline">
+            Your Game. Your Vault.
+          </div>
+
+          <p>
+            A gaming marketplace designed around account listings,
+            seller verification, buyer protection, reviews,
+            transaction management and trust-focused features.
+            Initially focused on Mobile Legends: Bang Bang.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">React</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Database</span>
+
+          </div>
+
+          <a
+            href="#"
+            class="btn btn-primary"
+          >
+            View Project →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
+
+  <div class="container">
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="section-number">
+          04 / PROJECTS
+        </div>
+
+        <h2 class="section-title">
+          Things I'm building.
+        </h2>
+
+      </div>
+
+      <p class="section-description">
+        A collection of current, planned and experimental
+        software projects.
+      </p>
+
+    </div>
+
+
+    <div class="projects">
+
+
+      <!-- PROJECT 1 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            PERSONAL SYSTEM
+          </div>
+
+          <h3>
+            Private Notes Server
+          </h3>
+
+          <p>
+            Private knowledge and document management
+            for notes, research and projects.
+          </p>
+
+        </div>
+
+        <span class="status">
+          In Development
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 2 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            ARTIFICIAL INTELLIGENCE
+          </div>
+
+          <h3>
+            Personal AI Assistant
+          </h3>
+
+          <p>
+            A JARVIS-style assistant for knowledge,
+            projects, files and automation.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Planned
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 3 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            KNOWLEDGE SYSTEM
+          </div>
+
+          <h3>
+            Personal Knowledge Base
+          </h3>
+
+          <p>
+            A structured system for preserving and
+            connecting knowledge and research.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Research
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 4 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            DEVELOPER TOOL
+          </div>
+
+          <h3>
+            Terminal Toolkit
+          </h3>
+
+          <p>
+            A Python terminal application containing
+            useful tools for Termux.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Research
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 5 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            CYBERSECURITY
+          </div>
+
+          <h3>
+            Security Laboratory
+          </h3>
+
+          <p>
+            Controlled cybersecurity experiments,
+            monitoring tools and defensive labs.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Research
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 6 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            AI / RESEARCH
+          </div>
+
+          <h3>
+            AI Research Assistant
+          </h3>
+
+          <p>
+            A system for collecting, analyzing and
+            organizing research information.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Planned
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 7 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            PERSONAL INFRASTRUCTURE
+          </div>
+
+          <h3>
+            Personal Cloud
+          </h3>
+
+          <p>
+            Private storage and file management
+            accessible across personal devices.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Planned
+        </span>
+
+      </article>
+
+
+      <!-- PROJECT 8 -->
+
+      <article class="project reveal">
+
+        <div>
+
+          <div class="project-type">
+            DEVELOPER TOOL
+          </div>
+
+          <h3>
+            Project Generator
+          </h3>
+
+          <p>
+            Automated project structures, configurations
+            and development templates.
+          </p>
+
+        </div>
+
+        <span class="status">
+          Planned
+        </span>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     BEYOND CODE
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="section-number">
+          05 / BEYOND CODE
+        </div>
+
+        <h2 class="section-title">
+          Other interests.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="interests reveal">
+
+      <span class="interest">
+        Programming
+      </span>
+
+      <span class="interest">
+        Web Development
+      </span>
+
+      <span class="interest">
+        Cybersecurity
+      </span>
+
+      <span class="interest">
+        Automation
+      </span>
+
+      <span class="interest">
+        Fishing
+      </span>
+
+      <span class="interest">
+        Taekwondo
+      </span>
+
+      <span class="interest">
+        Technology
+      </span>
+
+      <span class="interest">
+        Problem Solving
+      </span>
+
+      <span class="interest">
+        Research
+      </span>
+
+      <span class="interest">
+        You♥
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+  <div class="container">
+
+    <div class="contact">
+
+      <div class="reveal">
+
+        <div class="section-number">
+          06 / CONTACT
+        </div>
+
+        <h2>
+          Let's build
+          something useful.
+        </h2>
+
+      </div>
+
+
+      <div class="reveal">
+
+        <p class="contact-text">
+          Interested in software, AI, cybersecurity,
+          or turning an idea into a working system?
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="mailto:augustus.wilson.gentech@gmail.com"
+            class="btn btn-primary"
+          >
+            Email Me
+          </a>
+
+          <a
+            href="https://github.com/SgtPyr"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            GitHub →
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@master.oakwyn?_r=1&_t=ZS-9A4PZD1erBc"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            TikTok →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="container footer">
+
+    <span>
+      pimpim. 
+    </span>
+
+    <span>
+      © 2026 · Built with HTML, CSS & JavaScript
+    </span>
+
+  </div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>  
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+  /* Mobile menu */
+
+  const menu =
+    document.getElementById("menu");
+
+  const navLinks =
+    document.getElementById("navLinks");
+
+
+  menu.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+  });
+
+
+  /* Close mobile menu */
+
+  document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+      });
+
+    });
+
+
+  /* Scroll reveal */
+
+  const observer =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+  document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+</script>
+
+</body>
+      </html>
